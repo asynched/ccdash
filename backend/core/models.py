@@ -81,7 +81,7 @@ class Schedule(models.Model):
 
 class Resource(models.Model):
     id = models.UUIDField(default=uuid4, primary_key=True, editable=False)
-    name = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
     description = models.TextField()
     url = models.URLField(max_length=512)
 
