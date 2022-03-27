@@ -11,16 +11,26 @@ class Subject(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Teacher(models.Model):
     id = models.UUIDField(default=uuid4, primary_key=True, editable=False)
     name = models.CharField(max_length=255)
     profile_image = models.URLField(max_length=512)
 
-    subject = models.ManyToManyField(Subject, related_name="teachers")
+    subject = models.ManyToManyField(
+        Subject,
+        related_name="teachers",
+        blank=True,
+    )
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Task(models.Model):
@@ -33,6 +43,9 @@ class Task(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
 
 
 class Schedule(models.Model):
@@ -78,6 +91,9 @@ class Schedule(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return f"{self.weekday} - {self.subject}"
+
 
 class Resource(models.Model):
     id = models.UUIDField(default=uuid4, primary_key=True, editable=False)
@@ -89,3 +105,6 @@ class Resource(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title

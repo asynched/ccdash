@@ -5,6 +5,7 @@ from core.models import (
     Teacher,
     Resource,
     Task,
+    Schedule,
 )
 
 
@@ -17,7 +18,7 @@ class SubjectAdmin(admin.ModelAdmin):
 
 @admin.register(Teacher)
 class TeacherAdmin(admin.ModelAdmin):
-    list_display = ("name", "profile_image", "created_at", "updated_at")
+    list_display = ("name", "created_at", "updated_at")
     list_filter = ("created_at", "updated_at")
     search_fields = ("name",)
 
@@ -34,3 +35,10 @@ class ResourceAdmin(admin.ModelAdmin):
     list_display = ("title", "subject", "created_at", "updated_at")
     list_filter = ("created_at", "updated_at")
     search_fields = ("title",)
+
+
+@admin.register(Schedule)
+class ScheduleAdmin(admin.ModelAdmin):
+    list_display = ("weekday", "subject", "created_at", "updated_at")
+    list_filter = ("created_at", "updated_at")
+    search_fields = ("weekday",)
