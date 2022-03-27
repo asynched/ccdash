@@ -37,3 +37,7 @@ migrations:
 #>> Migrate the database to the new version
 migrate:
 	$(PY) $(ROOT_FILE) migrate
+
+#>> Dump database data to a JSON file
+dump:
+	$(PY) $(ROOT_FILE) dumpdata --format=json > dump.json
