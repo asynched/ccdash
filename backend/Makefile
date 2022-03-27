@@ -3,7 +3,7 @@
 MAKEFLAGS			:= --silent
 PY					:= python
 PIP					:= pip
-DEPENDENCIES_FILE 	:= requirements.txt
+DEPENDENCIES_FILE	:= requirements.txt
 ROOT_FILE			:= manage.py
 
 # Setup related
