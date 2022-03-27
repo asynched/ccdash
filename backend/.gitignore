@@ -1,0 +1,6 @@
+# Folders
+**/venv
+**/__pycache__
+
+# Files
+*.sqlite3
