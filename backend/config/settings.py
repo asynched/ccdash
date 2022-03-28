@@ -130,3 +130,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 GRAPHENE = {
     "SCHEMA": "core.graphql.schema.schema",
 }
+
+# Cors settings
+CORS_ALLOW_ALL_ORIGINS = True
