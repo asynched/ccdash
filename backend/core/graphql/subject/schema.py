@@ -1,8 +1,10 @@
 from graphene_django import DjangoObjectType
 from graphene import ObjectType, List, Field, UUID
 
-from core.models import Subject, Resource
+from core.models import Subject, Resource, Teacher, Task
 from core.graphql.resource.schema import ResourceType
+from core.graphql.teacher.schema import TeacherType
+from core.graphql.task.schema import TaskType
 
 
 class SubjectType(DjangoObjectType):
@@ -12,14 +14,25 @@ class SubjectType(DjangoObjectType):
     such as math or programming, for example.
     """
 
+    tasks = List(TaskType)
     resources = List(ResourceType)
+    teacher = Field(TeacherType)
+
+    def resolve_tasks(self, info):
+        return Task.objects.filter(subject=self)
+
+    def resolve_teacher(self, info):
+        try:
+            return Teacher.objects.get(subject=self)
+        except:
+            return None
 
     def resolve_resources(self, info):
         return Resource.objects.filter(subject=self)
 
     class Meta:
         model = Subject
-        fields = ("id", "name", "resources")
+        fields = ("id", "name", "about", "resources")
 
 
 class SubjectQueries(ObjectType):
