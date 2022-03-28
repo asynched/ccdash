@@ -7,6 +7,7 @@ from core.validators import ScheduleValidator
 class Subject(models.Model):
     id = models.UUIDField(default=uuid4, primary_key=True, editable=False)
     name = models.CharField(max_length=255)
+    about = models.TextField(default="")
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
