@@ -13,23 +13,23 @@ export default function SubjectCard({ subject, onClick }: SubjectCardProps) {
   return (
     <a
       key={subject.id}
-      className="p-6 rounded-lg border transition duration-300 ease-in-out hover:shadow-2xl hover:border-transparent cursor-pointer"
+      className="min-w-[16rem] p-6 rounded-lg border transition duration-300 ease-in-out cursor-pointer hover:shadow-2xl hover:border-transparent lg:w-auto"
       onClick={onClick}
     >
-      <h2 className="mb-2 text-xl title">{subject.name}</h2>
-      <p className="mb-2 ">{truncateFn(subject.about)}</p>
+      <h2 className="mb-2 text-xl title max-w-[24ch]">{subject.name}</h2>
+      <p className="mb-2 hidden md:block">{truncateFn(subject.about)}</p>
       {subject.teacher && (
-        <p className="mb-2">
-          <b>Professor:</b> {subject.teacher?.name}
+        <p className="mb-2 hidden lg:block">
+          <b className="title">Professor:</b> {subject.teacher?.name}
         </p>
       )}
       <div className="grid grid-cols-2">
         <div className="flex gap-2 items-center">
-          <ClipboardListIcon className="w-4 h-4" />{' '}
+          <ClipboardListIcon className="w-5 h-5" />{' '}
           <span>{subject.tasks.length}</span>
         </div>
         <div className="flex gap-2 items-center">
-          <BookmarkAltIcon className="w-4 h-4" />{' '}
+          <BookmarkAltIcon className="w-5 h-5" />{' '}
           <span>{subject.resources.length}</span>
         </div>
       </div>
